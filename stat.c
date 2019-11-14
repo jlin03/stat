@@ -8,21 +8,21 @@
 #include <string.h>
 
 int main() {
-  char *f = "main.c";
+  char *f = "stat.c";
   struct stat info;
   stat(f, &info);
-  
+
   int p = info.st_mode;
-  
+
     int oct = 0, i = 1;
     while (p != 0) {
         oct += (p % 8) * i;
         p /= 8;
         i *= 10;
     }
-    
+
   p = oct;
-    
+
   char perms[10];
   for(int i = 0; i < 3; i++) {
       int digit = p % 10;
@@ -64,8 +64,8 @@ int main() {
       }
   }
   perms[9] = NULL;
-  
-  
+
+
   float size = (float)info.st_size;
   int power = 0;
   char *s;
@@ -88,7 +88,7 @@ int main() {
   if(power == 4) {
       s = strdup("TB");
   }
- 
+
 
   printf("\"%s\"  Size: %f %s  Permissions: %s  Last Access: %s",f,size,s,perms,ctime(&info.st_atime));
 
