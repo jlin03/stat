@@ -63,7 +63,7 @@ int main() {
           perms[((3-i)*3)-3] = 'r';
       }
   }
-  perms[9] = NULL;
+  perms[9] = '\0';
 
 
   float size = (float)info.st_size;
